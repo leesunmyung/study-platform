@@ -1,0 +1,101 @@
+스테이지에 올려야(add) 커밋된다.
+Git에 업로드하는걸 push
+https://github.com/leesunmyung/August-2020.git
+
+아틀라시안 가입 (구글 vividlee81)
+깃허브 홈페이지(인터넷 세상 어딘가의 컴퓨터에 있는)에 
+있는게 원격저장소의 내용이다. -> 'local 저장소'
+
+clone-{add-commit-push}
+
+<커밋메시지> 
+
+커밋메시지작성법:첫줄에 간단하지만 명확한 내용을 쓰고, 
+한 줄 띄우고 자세한 내용을 적는다. 한 번에 한 내용씩 커밋한다.
+
+push에 (1) 들어오면 push 할게 하나 생겼다는거고, 깃허브에 올라가는 것.
+
+8/21
+세 개의 공간 - working directory(작업공간) -> staging area -> repository
+repository : 내 컴퓨터 속 저장소 : 'local'
+
+git commit 버전을 만드는 명령어
+commit message 이 변화(버전)이 의미하는 것을 담은 메시지
+
+git diff 변경사항 확인 아이디값 복사
+
+브랜치, 체크아웃
+특정 커밋으로 돌아가고 싶을때에는 해당커 밋에서 해당 브랜치를 만들어 작업한다.
+
+Pull은 자주 해준다.
+안전하게 merge 되었으면 branch 삭제 해도 된다.
+
+*비주얼스튜디오코드 작성하고 한줄 띄우고 저장하는게 좋다.
+
+충돌났을때 코드에서 위에거는 내거, 밑에거는 다른 충돌난 거.
+
+머지 실패하면 회색 동그라미
+
+< 충돌 실패 에러 해결 방법 >
+방법1) 에디터에서 head 같은 줄 지우고, 소스트리에서 커밋한다. 
+	이때 커밋 메시지는 자동 생성된다.
+방법2) 수동머지. 느낌표 난 hello.md 왼쪽 마우스 클릭 > 충돌해결>저장소.. 클릭
+	(결과 상대방 걸로 나옴)
+방법3) 수동머지. 느낌표 난 hello.md 왼쪽 마우스 클릭 > 충돌해결>내것.. 클릭
+	(결과 master걸로 나옴)
+
+origin이 원격?(홈페이지)인거 같고 master는 소스트리에서 짱인 애.
+----------------------------------------------------------------------
+error: failed to push some refs to 'https://github.com/leesunmyung/August-2020.git'
+
+hint: Updates were rejected because the tip of your current branch is behind
+=> 니가 푸시하려고한 원본('띄어쓰기 다시'?)은 원격 저장소(origin)보다 과거의 것이기 때무넹
+지금 push를 할 수 없다! 
+
+소스트리에서 '강제 푸시' 안되면 터미널 열어서
+git push --force 입력
+----------------------------------------------------------------------
+
+새로운 브랜치 만들어서 체크아웃 하는 걸 추천!(reset 비추)
+
+리버트 : 커밋 되돌리기 - 다시 되돌아가려면 리셋(밑에거 누르고 '현재 브랜치까지~')
+리버트는 커밋을 보존하면서 내용만 작업디렉터리의 내용만 되돌릴 수 있는 좋은 방법.
+
+git revert HEAD 가장 최근 커밋을 되돌려라
+git revert HEAD HEAD~1 동시에 헤드와 헤드 아빠를 순서대로 되돌려라
+나갈땐 ecs -> :wq -> esc -> :wq
+
+브랜치 체크아웃시 주의사항
+- 브랜치를 만들고 체크아웃을 하려면 현재 작업디렉터리가 깨끗해야 한다.
+그런데 갑작스럽게 체크아웃이 필요하다면??
+
+----------------------------------------------------------------------
+error: Your local changes to the following files would be overwritten by checkout:
+	hello.md
+Please commit your changes or stash them before you switch branches.
+Aborting
+로컬 변경사항이 ~해서 될 수 없다. (test라는 브랜치에서 코드 작성 후 저장만 하고 커밋은 안한채로
+master로 체크아웃 하려 할때 발생)
+----------------------------------------------------------------------
+(원래라면 의미 없는 내용은 커밋하지 않는게 좋지만)
+-
+근데 긴급하게 요구사항 받아 master로 가야할 때!
+방법1)  
+1. test 브랜치에서 임시 저장(커밋)하고 master로 돌아가 하려던 일 처리한다.
+2. test로 다시 돌아와 마무리 짓는다.
+근데 1.에서 불필요한 커밋이 생겼으니 커밋 덮어쓰기를 한다.
+필요하면 push --force 한다.(필요할 수도 있다.)
+
+
+rebase(재배치)
+커밋 히스토리 깔끔하게 정리 가능 but 위험함(이미 원격 저장소에 올라간 경우 + 협업 하고 있는 경우 
+----------------------------------------------------------------------
+The error is: error: There was a problem with the editor ''C:\Users\vivid ... \SourceTree\stree_gri''.
+-> 터미널에서 git rebase --continue 입력
+----------------------------------------------------------------------
+
+< 파일/폴더 : 로컬 컴퓨터 --> 깃허브 사이트 이동하기 >
+$ git mv hello.md leesm/.
+$ git commit -m "leesm 폴더 안으로 이동"
+$ git push origin master
+후에 사이트 확인
