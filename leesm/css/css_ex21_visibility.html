@@ -1,0 +1,96 @@
+ <!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <style>
+
+        #display_none div:nth-child(1) {
+            width:100px;
+            height:100px;
+            background-color:#ff0000;
+            color:#ffffff;
+            font-weight:bold;
+            text-align:center;
+        }
+
+        #display_none div:nth-child(2) {
+            width:100px;
+            height:100px;
+            background-color:#00ff00;
+            color:#ffffff;
+            font-weight:bold;
+            text-align:center;
+            display:none;   /*자리 아예 날림*/
+        }
+
+        #display_none div:nth-child(3) {
+            width:100px;
+            height:100px;
+            background-color:#0000ff;
+            color:#ffffff;
+            font-weight:bold;
+            text-align:center;
+        }
+
+
+        #visibility_hidden div:nth-child(1) {
+            width:100px;
+            height:100px;
+            background-color:#ff0000;
+            color:#ffffff;
+            font-weight:bold;
+            text-align:center;
+        }
+
+        #visibility_hidden div:nth-child(2) {
+            width:100px;
+            height:100px;
+            background-color:#00ff00;
+            color:#ffffff;
+            font-weight:bold;
+            text-align:center;
+            visibility:hidden;  /*안 보이지만 자리 보존*/
+        }
+
+        #visibility_hidden div:nth-child(3) {
+            width:100px;
+            height:100px;
+            background-color:#0000ff;
+            color:#ffffff;
+            font-weight:bold;
+            text-align:center;
+        }
+
+    </style>
+
+</head>
+<body> 
+    <div id="display_none">
+        <div>
+            content1
+        </div>
+        <div>
+            content2
+        </div>
+        <div>
+            content3
+        </div>
+    </div>
+
+    <div id="visibility_hidden">
+        <div>
+            content1
+        </div>
+        <div>
+            content2
+        </div>
+        <div>
+            content3
+        </div>
+    </div>
+
+</body>
+</html>
